@@ -12,6 +12,12 @@ class ProductRegister:
             if product == productid:
                 return product
         return None
+    
+    def getName(self, productId):
+        with open('products.txt') as f:
+            for line in f:
+                if productId == line.split(";")[0]:
+                    return line.split(";")[1]
 
     def addProduct(self, productId, count):
         self._listOfProducts.append(RegisterRow(productId, count))

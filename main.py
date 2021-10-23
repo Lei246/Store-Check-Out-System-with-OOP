@@ -41,7 +41,7 @@ def startNewReceipt():
             print("Finns ej")
         else:
             productReg.addProduct(parts[0], parts[1])
-            print(f"Bra - adding to receipt: {product}")        
+            print(f"Bra - adding to receipt: {productReg.getName(product)}")        
             showTime()
             productReg.readFromFile(os.path)
             productReg.showKvitto()
