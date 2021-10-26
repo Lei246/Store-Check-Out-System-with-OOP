@@ -15,37 +15,31 @@ def getInputBetween(startval: int,endval: int)->int:
             print(f"Ogiltigt val, mellan {startval} och {endval}, tack")
         except ValueError:
             print("Ange ett tal tack!")
-
-def showTime():
-    print("KASSA")
-    now = datetime.now()
-    print(f"KVITTO  {now}")
     
 def startNewReceipt():
     productReg = ProductRegister()
-    productReg.readFromFile("products.txt")
+    productReg.readAllProductsIDFromFile("products.txt")
     while True: 
+        print("KASSA")
+        now = datetime.now()
+        print(f"KVITTO  {now}")
         print("Kommandon:")
         print("<productid> <antal>")
         print("PAY")
         kommando = input("Kommando:")
         if kommando == "PAY":
-            #skriva till en fil
-            return
+            print(productReg.saveToFile())
             break
         parts = kommando.split(" ")
         productId = parts[0]
-
         product = productReg.find(productId)
         if product == None:
             print("Finns ej")
         else:
             productReg.addProduct(parts[0], parts[1])
             print(f"Bra - adding to receipt: {productReg.getName(product)}")        
-            showTime()
-            productReg.readFromFile(os.path)
-            productReg.showKvitto()
-
+            #showTime()
+            print(*productReg.Kvitto(), sep="\n")
 
 
 while True:
