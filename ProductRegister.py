@@ -1,5 +1,8 @@
 from registerRow import RegisterRow
 from product import Product
+import os
+from datetime import datetime
+
 
 class ProductRegister:
 
@@ -22,20 +25,25 @@ class ProductRegister:
     def addProduct(self, productId, count):
         self._listOfProducts.append(RegisterRow(productId, count))
 
-    def showKvitto(self):
+    def Kvitto(self):
         priceTotal = 0
+        currentTime = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+        #currentTimeShort = currentTime.replace(microsecond = 0)
+        kvittoList = [f"KVITTO  {currentTime}"]
         for i in self._listOfProducts:
             priceI = i.getCount() * (i.getPrice(i._productId))
-            print(f"{i.getName(i._productId)} {i.getCount()}*{i.getPrice(i._productId)} = {priceI} ")
+            kvittoList.append(f"{i.getName(i._productId)} {i.getCount()}*{i.getPrice(i._productId)} = {priceI} ")
             priceTotal = priceTotal + priceI
-        print(f"Total to pay: {priceTotal}")
+        kvittoList.append(f"Total to pay: {priceTotal}")
+        return kvittoList
 
-    def readFromFile(self,path:str):
-        # läs från fil och stoppa in i listan
+
+    def readAllProductsIDFromFile(self, path):
         with open('products.txt') as f:
             for line in f:
                 self._listId.append(line.split(";")[0])
 
-    def saveToFile(self, path:str):
-        pass
-        # sparar alla i listan till fil
+    def saveToFile(self):
+        with open(f"Receipt_{datetime.today().strftime('%Y%m%d')}.txt", 'w') as f:
+            for element in self.Kvitto():
+                f.write(element + " \n")
