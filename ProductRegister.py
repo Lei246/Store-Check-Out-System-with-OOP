@@ -27,8 +27,10 @@ class ProductRegister:
 
     def Kvitto(self):
         priceTotal = 0
-        currentTime = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+        currentTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        #currentTime = datetime.now().isoformat(timespec='seconds', sep=' ')
         #currentTimeShort = currentTime.replace(microsecond = 0)
+        #dt = datetime.today().replace(microsecond=None)
         kvittoList = [f"KVITTO  {currentTime}"]
         for i in self._listOfProducts:
             priceI = i.getCount() * (i.getPrice(i._productId))
