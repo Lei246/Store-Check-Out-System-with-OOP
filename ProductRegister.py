@@ -28,9 +28,6 @@ class ProductRegister:
     def Kvitto(self):
         priceTotal = 0
         currentTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        #currentTime = datetime.now().isoformat(timespec='seconds', sep=' ')
-        #currentTimeShort = currentTime.replace(microsecond = 0)
-        #dt = datetime.today().replace(microsecond=None)
         kvittoList = [f"KVITTO  {currentTime}"]
         for i in self._listOfProducts:
             priceI = i.getCount() * (i.getPrice(i._productId))
@@ -46,6 +43,6 @@ class ProductRegister:
                 self._listId.append(line.split(";")[0])
 
     def saveToFile(self):
-        with open(f"Receipt_{datetime.today().strftime('%Y%m%d')}.txt", 'w') as f:
+        with open(f"Receipt_{datetime.today().strftime('%Y%m%d')}.txt", 'a') as f:
             for element in self.Kvitto():
                 f.write(element + " \n")

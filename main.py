@@ -21,8 +21,8 @@ def startNewReceipt():
     productReg.readAllProductsIDFromFile("products.txt")
     while True: 
         print("KASSA")
-        now = datetime.now()
-        print(f"KVITTO  {now}")
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print(f"KVITTO    {now}")
         print("Kommandon:")
         print("<productid> <antal>")
         print("PAY")

@@ -1,5 +1,11 @@
-KVITTO  2021-10-26-15:12:40 
+KVITTO  2021-10-26 20 
  banana 1.0*4.5 = 4.5  
- apple 2.0*5.0 = 10.0  
+ apple 1.0*5.0 = 5.0  
  cake 1.0*45.0 = 45.0  
-Total to pay: 59.5 
+ banana 1.0*4.5 = 4.5  
+Total to pay: 59.0 
+KVITTO  2021-10-26 20:10:44 
+ banana 1.0*4.5 = 4.5  
+ apple 1.0*5.0 = 5.0  
+ cake 1.0*45.0 = 45.0  
+Total to pay: 54.5 
