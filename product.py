@@ -12,4 +12,4 @@ class Product:
         return self._namn
 
     def getProductId(self):
-        return self._productId    
+        return self._productId  

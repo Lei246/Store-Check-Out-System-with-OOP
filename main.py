@@ -38,7 +38,6 @@ def startNewReceipt():
         else:
             productReg.addProduct(parts[0], parts[1])
             print(f"Bra - adding to receipt: {productReg.getName(product)}")        
-            #showTime()
             print(*productReg.Kvitto(), sep="\n")
 
 

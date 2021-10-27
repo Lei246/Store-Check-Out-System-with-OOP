@@ -28,16 +28,16 @@ class ProductRegister:
     def Kvitto(self):
         priceTotal = 0
         currentTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        kvittoList = [f"KVITTO  {currentTime}"]
+        kvittoList = [f"*** KVITTO  {currentTime}"]
         for i in self._listOfProducts:
             priceI = i.getCount() * (i.getPrice(i._productId))
             kvittoList.append(f"{i.getName(i._productId)} {i.getCount()}*{i.getPrice(i._productId)} = {priceI} ")
             priceTotal = priceTotal + priceI
-        kvittoList.append(f"Total to pay: {priceTotal}")
+        kvittoList.append(f"       Total to pay: {priceTotal}")
         return kvittoList
 
 
-    def readAllProductsIDFromFile(self, path):
+    def readAllProductsIDFromFile(self,path):
         with open('products.txt') as f:
             for line in f:
                 self._listId.append(line.split(";")[0])
