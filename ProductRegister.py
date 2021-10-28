@@ -1,3 +1,4 @@
+from pristyp import PrisTyp
 from registerRow import RegisterRow
 from product import Product
 import os
@@ -22,8 +23,17 @@ class ProductRegister:
                 if productId == line.split(";")[0]:
                     return line.split(";")[1]
 
+ 
+
     def addProduct(self, productId, count):
-        self._listOfProducts.append(RegisterRow(productId, count))
+
+        priceTypeGot = RegisterRow(productId, count).getPriceTyp(productId).rstrip().strip()
+        if (priceTypeGot == PrisTyp.PerStyck.name) and (RegisterRow(productId, count).getCount().is_integer() == False):
+            print (f"{RegisterRow(productId, count).getName(productId)} not added! must be an integer count!")       
+        else:
+            self._listOfProducts.append(RegisterRow(productId, count))
+            print(f"Bra - adding to receipt: {RegisterRow(productId, count).getName(productId)}")        
+
 
     def Kvitto(self):
         priceTotal = 0
@@ -33,7 +43,7 @@ class ProductRegister:
             priceI = i.getCount() * (i.getPrice(i._productId))
             kvittoList.append(f"{i.getName(i._productId)} {i.getCount()}*{i.getPrice(i._productId)} = {priceI} ")
             priceTotal = priceTotal + priceI
-        kvittoList.append(f"       Total to pay: {priceTotal}")
+        kvittoList.append(f"      Total to pay: {priceTotal}")
         return kvittoList
 
 
