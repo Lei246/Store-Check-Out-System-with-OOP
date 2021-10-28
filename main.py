@@ -37,7 +37,6 @@ def startNewReceipt():
             print("Finns ej")
         else:
             productReg.addProduct(parts[0], parts[1])
-            print(f"Bra - adding to receipt: {productReg.getName(product)}")        
             print(*productReg.Kvitto(), sep="\n")
 
 

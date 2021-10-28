@@ -21,3 +21,10 @@ class RegisterRow(Product):
             for line in f:
                 if self._productId == line.split(";")[0]:
                     return float(line.split(";")[2])
+
+    
+    def getPriceTyp(self, productId)-> float:
+        with open('products.txt') as f:
+            for line in f:
+                if self._productId == line.split(";")[0]:
+                    return line.split(";")[3]  
