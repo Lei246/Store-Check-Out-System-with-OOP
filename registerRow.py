@@ -10,6 +10,7 @@ class RegisterRow(Product):
     def getProductId(self):
         return self._productId
     def getCount(self) -> float:
+
         return float(self._count)
     def getName(self, productId):
         with open('products.txt') as f:
